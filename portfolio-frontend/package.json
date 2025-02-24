@@ -1,3 +1,9 @@
+"homepage":
+"https://VedhamaniprabakarA.github.io/portfolio"
+"script": {
+  "predeploy": "npm run build"
+  "deploy": "gh-pages -d build"
+}
 {
   "name": "portfolio-frontend",
   "version": "0.1.0",
