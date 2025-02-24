@@ -1,29 +1,22 @@
 name: Deploy React App
-
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
 
       - name: Install dependencies
         run: |
           cd portfolio-frontend
           npm install
 
-      - name: Build the React app
+      - name: Build React App
         run: |
           cd portfolio-frontend
           npm run build
