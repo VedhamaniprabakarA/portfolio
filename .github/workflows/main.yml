@@ -1,28 +1,21 @@
 name: Deploy React App
+
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-24.04
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          cd portfolio-frontend
-          npm install
-
-      - name: Build React App
-        run: |
-          cd portfolio-frontend
-          npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Build and deploy
+        uses: peaceiris/actions-gh-pages@v3  # Verify the action name and version
         with:
-          branch: gh-pages
-          folder: portfolio-frontend/build
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: VedhamaniprabakarA/portfolio
+          publish_dir: ./build
